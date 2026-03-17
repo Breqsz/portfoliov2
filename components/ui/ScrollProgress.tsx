@@ -48,7 +48,7 @@ export function ScrollProgress() {
         />
       </div>
 
-      {/* Back to top - seta discreta */}
+      {/* Back to top - canto inferior direito */}
       <AnimatePresence>
         {showBackTop && (
           <motion.button
@@ -60,7 +60,7 @@ export function ScrollProgress() {
             transition={{ duration: 0.2 }}
             data-cursor="link"
             data-cursor-label={t("nav.backToTop")}
-            className="fixed bottom-6 left-1/2 z-[9997] flex -translate-x-1/2 items-center justify-center rounded-full border border-white/10 bg-white/5 p-2 text-white/70 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+            className="fixed bottom-6 right-6 z-[9997] flex items-center justify-center rounded-full border border-white/10 bg-white/5 p-2 text-white/70 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
             aria-label={t("nav.backToTop")}
           >
             <ChevronUp className="size-5" strokeWidth={2} />

@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { motion } from "framer-motion";
 import { FileDown, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocale } from "@/lib/i18n/context";
+import { motionConfig } from "@/lib/motion";
 
 const CV_PT = "/images/curriculo_guilherme_portugues.pdf";
 const CV_EN = "/images/cv_guilherme_en.pdf";
@@ -25,17 +27,24 @@ export function DownloadCVButton({ className }: { className?: string }) {
 
   return (
     <>
-      <button
+      <motion.button
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "inline-flex items-center gap-2 rounded-lg border border-blue-500/40 bg-blue-500/10 px-4 py-2.5 text-sm font-medium text-blue-400 transition-colors duration-300 hover:bg-blue-500/20 hover:text-blue-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]",
+          "group inline-flex items-center gap-2 rounded-xl border border-blue-500/50 bg-blue-500/20 px-5 py-3 text-sm font-semibold text-blue-100",
+          "transition-[border-color,background-color,color,box-shadow] duration-300",
+          "hover:border-blue-500/60 hover:bg-blue-500/25 hover:text-white hover:shadow-[0_0_32px_-8px_rgba(59,130,246,0.35)]",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]",
+          "active:scale-[0.98]",
           className
         )}
+        whileHover={{ y: -1 }}
+        whileTap={{ scale: 0.98 }}
+        transition={motionConfig.easing.springSoft}
       >
-        <FileDown className="size-4" />
-        {t("about.downloadCV")}
-      </button>
+        <FileDown className="size-4 shrink-0" />
+        {t("about.ctaDownload")}
+      </motion.button>
 
       {open && (
         <div
