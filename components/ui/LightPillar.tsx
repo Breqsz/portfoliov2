@@ -242,7 +242,7 @@ export function LightPillar({
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    let mouseMoveTimeout: ReturnType<typeof setTimeout> | null = null;
+    let mouseMoveTimeout: ReturnType<typeof window.setTimeout> | null = null;
     const handleMouseMove = (event: MouseEvent) => {
       if (!interactive) return;
       if (mouseMoveTimeout) return;
@@ -282,7 +282,7 @@ export function LightPillar({
     };
     rafRef.current = requestAnimationFrame(animate);
 
-    let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
+    let resizeTimeout: ReturnType<typeof window.setTimeout> | null = null;
     const handleResize = () => {
       if (resizeTimeout) clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
