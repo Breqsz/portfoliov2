@@ -8,7 +8,7 @@ import { useLocale } from "@/lib/i18n/context";
 export function Footer() {
   const { t } = useLocale();
   return (
-    <footer className="border-t border-white/[0.06] bg-[var(--ds-bg)] px-6 py-12">
+    <footer className="border-t border-white/[0.06] bg-[var(--ds-bg)] px-6 py-12 pb-[max(3rem,env(safe-area-inset-bottom))]">
       <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-6 px-6 md:flex-row">
         <p className="ds-body-muted text-sm">
           © {new Date().getFullYear()} {site.name}. {t("footer.tagline")}

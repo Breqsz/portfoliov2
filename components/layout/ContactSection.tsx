@@ -31,7 +31,7 @@ export function ContactSection() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8">
               <a
                 href={`mailto:${contact.email}`}
-                className="group flex items-center gap-3 rounded-lg text-neutral-300 transition-all duration-300 hover:scale-[1.02] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className="group flex min-h-[44px] items-center gap-3 rounded-lg text-neutral-300 transition-all duration-300 hover:scale-[1.02] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
                 aria-label={`Email: ${contact.email}`}
               >
                 <span className="ds-surface flex size-11 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:border-white/[0.12]">
@@ -43,7 +43,7 @@ export function ContactSection() {
                 href={contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 rounded-lg text-neutral-300 transition-all duration-300 hover:scale-[1.02] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className="group flex min-h-[44px] items-center gap-3 rounded-lg text-neutral-300 transition-all duration-300 hover:scale-[1.02] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
                 aria-label="GitHub (opens in new tab)"
               >
                 <span className="ds-surface flex size-11 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:border-white/[0.12]">
@@ -55,7 +55,7 @@ export function ContactSection() {
                 href={contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 rounded-lg text-neutral-300 transition-all duration-300 hover:scale-[1.02] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className="group flex min-h-[44px] items-center gap-3 rounded-lg text-neutral-300 transition-all duration-300 hover:scale-[1.02] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
                 aria-label="LinkedIn (opens in new tab)"
               >
                 <span className="ds-surface flex size-11 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:border-white/[0.12]">
@@ -69,7 +69,7 @@ export function ContactSection() {
               <a
                 href={CV_PT}
                 download
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-neutral-200 transition-all duration-300 hover:scale-[1.02] hover:border-white/20 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-neutral-200 transition-all duration-300 hover:scale-[1.02] hover:border-white/20 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
               >
                 <FileDown className="size-4" />
                 {t("contact.downloadCVPt")}
@@ -77,7 +77,7 @@ export function ContactSection() {
               <a
                 href={CV_EN}
                 download
-                className="inline-flex items-center gap-2 rounded-lg border border-blue-500/40 bg-blue-500/10 px-5 py-2.5 text-sm font-medium text-blue-400 transition-all duration-300 hover:scale-[1.02] hover:bg-blue-500/20 hover:text-blue-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-blue-500/40 bg-blue-500/10 px-5 py-2.5 text-sm font-medium text-blue-400 transition-all duration-300 hover:scale-[1.02] hover:bg-blue-500/20 hover:text-blue-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
               >
                 <FileDown className="size-4" />
                 {t("contact.downloadCVEn")}

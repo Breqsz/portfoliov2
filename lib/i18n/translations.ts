@@ -44,6 +44,10 @@ export const translations = {
     stack: {
       title: "Stack",
     },
+    expertise: {
+      title: "Conhecimento e foco",
+      selectedWorkLink: "Ver projetos",
+    },
     experience: {
       title: "Experiência",
     },
@@ -139,6 +143,10 @@ export const translations = {
     },
     stack: {
       title: "Stack",
+    },
+    expertise: {
+      title: "Expertise & focus",
+      selectedWorkLink: "View projects",
     },
     experience: {
       title: "Experience",

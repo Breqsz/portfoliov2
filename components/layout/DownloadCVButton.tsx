@@ -31,7 +31,7 @@ export function DownloadCVButton({ className }: { className?: string }) {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "group inline-flex items-center gap-2 rounded-xl border border-blue-500/50 bg-blue-500/20 px-5 py-3 text-sm font-semibold text-blue-100",
+          "group inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-blue-500/50 bg-blue-500/20 px-5 py-3 text-sm font-semibold text-blue-100",
           "transition-[border-color,background-color,color,box-shadow] duration-300",
           "hover:border-blue-500/60 hover:bg-blue-500/25 hover:text-white hover:shadow-[0_0_32px_-8px_rgba(59,130,246,0.35)]",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]",

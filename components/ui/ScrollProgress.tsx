@@ -36,9 +36,10 @@ export function ScrollProgress() {
 
   return (
     <>
-      {/* Progress bar - fixed at bottom, full width */}
+      {/* Progress bar - fixed above safe area */}
       <div
-        className="fixed bottom-0 left-0 right-0 z-[9997] h-0.5 bg-white/[0.06]"
+        className="fixed left-0 right-0 z-[9997] h-0.5 bg-white/[0.06]"
+        style={{ bottom: "env(safe-area-inset-bottom)" }}
         aria-hidden
       >
         <motion.div
@@ -48,7 +49,7 @@ export function ScrollProgress() {
         />
       </div>
 
-      {/* Back to top - canto inferior direito */}
+      {/* Back to top - canto inferior direito com safe area */}
       <AnimatePresence>
         {showBackTop && (
           <motion.button
@@ -60,7 +61,11 @@ export function ScrollProgress() {
             transition={{ duration: 0.2 }}
             data-cursor="link"
             data-cursor-label={t("nav.backToTop")}
-            className="fixed bottom-6 right-6 z-[9997] flex items-center justify-center rounded-full border border-white/10 bg-white/5 p-2 text-white/70 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+            className="fixed z-[9997] flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/10 bg-white/5 p-3 text-white/70 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+            style={{
+              bottom: "max(1.5rem, env(safe-area-inset-bottom))",
+              right: "max(1.5rem, env(safe-area-inset-right))",
+            }}
             aria-label={t("nav.backToTop")}
           >
             <ChevronUp className="size-5" strokeWidth={2} />

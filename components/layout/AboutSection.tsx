@@ -158,7 +158,7 @@ export function AboutSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    "inline-flex items-center gap-2 rounded-xl border border-white/[0.12] bg-white/[0.03] px-5 py-3 text-sm font-medium text-neutral-300",
+                    "inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-white/[0.12] bg-white/[0.03] px-5 py-3 text-sm font-medium text-neutral-300",
                     "transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-white",
                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]",
                     "active:scale-[0.98]"

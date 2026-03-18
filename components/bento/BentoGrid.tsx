@@ -5,10 +5,12 @@ import { Box, Server, Shield, Container, Users } from "lucide-react";
 import Link from "next/link";
 import { BentoTile, SectionHeading, ContentContainer } from "@/components/primitives";
 import { skillCategories } from "@/lib/data/skills";
+import { useLocale } from "@/lib/i18n/context";
 
 const icons = [Box, Server, Container, Shield, Users];
 
 export function BentoGrid() {
+  const { t } = useLocale();
   return (
     <section
       id="expertise"
@@ -18,7 +20,7 @@ export function BentoGrid() {
       <ContentContainer>
         <SectionHeading
           number="02"
-          title="Expertise & focus"
+          title={t("expertise.title")}
           className="mb-12"
           headingId="expertise-heading"
         />
@@ -55,8 +57,8 @@ export function BentoGrid() {
 
           <BentoTile span="sm" index={6}>
             <Link href="#projects" data-cursor="link" className="flex h-full flex-col justify-between transition-colors duration-300 hover:text-blue-400">
-              <p className="text-sm font-medium text-white">Selected work</p>
-              <span className="mt-4 inline-flex items-center text-sm text-blue-400">View projects →</span>
+              <p className="text-sm font-medium text-white">{t("projects.selectedWork")}</p>
+              <span className="mt-4 inline-flex items-center text-sm text-blue-400">{t("expertise.selectedWorkLink")} →</span>
             </Link>
           </BentoTile>
         </div>

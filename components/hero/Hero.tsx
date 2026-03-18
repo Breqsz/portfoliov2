@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative grid min-h-screen overflow-hidden px-6 pt-20 lg:grid-cols-[1fr,minmax(320px,480px)] lg:items-center lg:gap-16 lg:px-12 xl:px-16"
+      className="relative grid min-h-screen overflow-hidden px-6 pt-[calc(5rem+env(safe-area-inset-top))] lg:grid-cols-[1fr,minmax(320px,480px)] lg:items-center lg:gap-16 lg:px-12 xl:px-16"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-1/3 -top-1/3 h-[80%] w-[80%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)]" />

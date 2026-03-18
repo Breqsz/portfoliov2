@@ -32,7 +32,7 @@ function NavLink({
         }
         onClick?.();
       }}
-      className="group relative block py-2 text-sm font-medium text-neutral-400 transition-colors duration-300 hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded"
+      className="group relative flex min-h-[44px] items-center py-3 text-sm font-medium text-neutral-400 transition-colors duration-300 hover:text-white focus:outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded"
     >
       {label}
       <span className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-blue-500/80 to-purple-500/80 transition-all duration-300 ease-out group-hover:w-full" />
@@ -55,7 +55,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed left-0 right-0 top-0 z-50 w-full border-b bg-[#0a0a0a]/70 backdrop-blur-xl transition-colors duration-500",
+        "fixed left-0 right-0 top-0 z-50 w-full border-b bg-[#0a0a0a]/70 pt-[env(safe-area-inset-top)] backdrop-blur-xl transition-colors duration-500",
         scrolled ? "border-white/[0.08]" : "border-white/[0.04]"
       )}
     >
@@ -187,7 +187,7 @@ export function Navbar() {
                   data-cursor="link"
                   data-cursor-label={cursorEnabled ? t("nav.cursorOff") : t("nav.cursorOn")}
                   className={cn(
-                    "flex items-center gap-2 rounded-md px-3 py-1.5 text-sm transition-colors",
+                    "flex min-h-[44px] items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
                     cursorEnabled ? "bg-white/10 text-white" : "text-neutral-500"
                   )}
                   aria-label={cursorEnabled ? "Desativar cursor animado" : "Ativar cursor animado"}
@@ -201,7 +201,7 @@ export function Navbar() {
                   data-cursor="link"
                   data-cursor-label={t("nav.switchToPt")}
                   className={cn(
-                    "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                    "flex min-h-[44px] items-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     locale === "pt" ? "bg-white/10 text-white" : "text-neutral-400 hover:text-white"
                   )}
                 >
@@ -213,7 +213,7 @@ export function Navbar() {
                   data-cursor="link"
                   data-cursor-label={t("nav.switchToEn")}
                   className={cn(
-                    "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                    "flex min-h-[44px] items-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     locale === "en" ? "bg-white/10 text-white" : "text-neutral-400 hover:text-white"
                   )}
                 >

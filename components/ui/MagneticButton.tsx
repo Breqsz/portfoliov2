@@ -43,7 +43,7 @@ export function MagneticButton({
   };
 
   const baseClasses = cn(
-    "group relative overflow-hidden rounded-xl px-6 py-3.5 text-sm font-medium",
+    "group relative flex min-h-[44px] items-center overflow-hidden rounded-xl px-6 py-3.5 text-sm font-medium",
     "transition-[border-color,box-shadow,transform,background-color] duration-300",
     "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]",
     "active:scale-[0.98]"

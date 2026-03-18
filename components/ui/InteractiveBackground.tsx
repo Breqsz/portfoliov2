@@ -1,19 +1,30 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { LightPillar } from "@/components/ui/LightPillar";
 
 const gridSize = 64;
+const NARROW_VIEWPORT = 480;
 
 export function InteractiveBackground() {
   const reducedMotion = useReducedMotion();
+  const [isVeryNarrow, setIsVeryNarrow] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${NARROW_VIEWPORT}px)`);
+    const handle = () => setIsVeryNarrow(mq.matches);
+    handle();
+    mq.addEventListener("change", handle);
+    return () => mq.removeEventListener("change", handle);
+  }, []);
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* LightPillar WebGL - bem discreto para não competir com conteúdo */}
-      {!reducedMotion && (
-        <div className="absolute inset-0 opacity-[0.22]" style={{ mixBlendMode: "screen" }}>
+      {/* LightPillar WebGL - desligado em viewport muito estreita para performance */}
+      {!reducedMotion && !isVeryNarrow && (
+        <div className="absolute inset-0 opacity-40 md:opacity-[0.22]" style={{ mixBlendMode: "screen" }}>
           <LightPillar
             topColor="#5227FF"
             bottomColor="#FF9FFC"
@@ -31,10 +42,10 @@ export function InteractiveBackground() {
         </div>
       )}
 
-      {/* Slow moving grid */}
+      {/* Slow moving grid - um pouco mais visível no mobile */}
       {!reducedMotion && (
         <motion.div
-          className="absolute inset-0 opacity-[0.02]"
+          className="absolute inset-0 opacity-[0.04] md:opacity-[0.02]"
           style={{
             backgroundImage: `
               linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
@@ -47,16 +58,16 @@ export function InteractiveBackground() {
         />
       )}
 
-      {/* Blur orbs - bem suaves para não competir com seções */}
+      {/* Blur orbs - mais visíveis no mobile via wrapper */}
       {!reducedMotion && (
-        <>
+        <div className="absolute inset-0 opacity-100 md:opacity-70">
           <motion.div
             className="absolute h-[320px] w-[320px] rounded-full bg-blue-500/10 blur-[100px]"
             style={{ left: "10%", top: "20%" }}
             animate={{
               x: [0, 30, -20, 0],
               y: [0, -20, 15, 0],
-              opacity: [0.2, 0.3, 0.2],
+              opacity: [0.28, 0.4, 0.28],
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -66,7 +77,7 @@ export function InteractiveBackground() {
             animate={{
               x: [0, -25, 15, 0],
               y: [0, 25, -10, 0],
-              opacity: [0.18, 0.28, 0.18],
+              opacity: [0.25, 0.38, 0.25],
             }}
             transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -75,22 +86,22 @@ export function InteractiveBackground() {
             animate={{
               x: [0, 15, -25, 0],
               y: [0, -15, 20, 0],
-              opacity: [0.15, 0.25, 0.15],
+              opacity: [0.22, 0.35, 0.22],
             }}
             transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
           />
-        </>
+        </div>
       )}
 
-      {/* Gradient mesh - bem discreto */}
+      {/* Gradient mesh - mais visível no mobile */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute -left-1/2 top-0 h-full w-full bg-[radial-gradient(ellipse_80%_60%_at_30%_20%,rgba(59,130,246,0.03),transparent_50%)]"
+          className="absolute -left-1/2 top-0 h-full w-full bg-[radial-gradient(ellipse_80%_60%_at_30%_20%,rgba(59,130,246,0.06),transparent_50%)] md:bg-[radial-gradient(ellipse_80%_60%_at_30%_20%,rgba(59,130,246,0.03),transparent_50%)]"
           animate={reducedMotion ? {} : { opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute -right-1/2 top-1/2 h-full w-full bg-[radial-gradient(ellipse_60%_80%_at_70%_50%,rgba(139,92,246,0.02),transparent_50%)]"
+          className="absolute -right-1/2 top-1/2 h-full w-full bg-[radial-gradient(ellipse_60%_80%_at_70%_50%,rgba(139,92,246,0.04),transparent_50%)] md:bg-[radial-gradient(ellipse_60%_80%_at_70%_50%,rgba(139,92,246,0.02),transparent_50%)]"
           animate={reducedMotion ? {} : { opacity: [0.7, 1, 0.7] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         />
