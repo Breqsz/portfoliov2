@@ -65,6 +65,9 @@ const ogImage =
 export const defaultMetadata: Metadata = {
   ...createPageMetadata({}),
   metadataBase: new URL(baseUrl),
+  icons: {
+    icon: "/images/favicon.ico",
+  },
   alternates: {
     canonical: baseUrl,
   },
