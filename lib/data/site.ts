@@ -1,7 +1,7 @@
 export const site = {
   name: "BREQ",
-  tagline: "Software Engineer",
-  heroEyebrow: "Software Engineer",
+  tagline: "Engenheiro de Software",
+  heroEyebrow: "Engenheiro de Software",
   heroHeadline: "Guilherme Rocha Bianchini",
   heroSubhead:
     "Estudante do 4º ano de Engenharia de Software na FIAP, com foco em desenvolvimento, infraestrutura e soluções escaláveis. Busco estágio em TI para aplicar conhecimentos em cloud computing, automação e desenvolvimento full-stack.",

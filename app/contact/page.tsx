@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -13,6 +14,7 @@ export default function ContactPage() {
     email: "",
     message: "",
   });
+  const { t } = useLocale();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,10 +37,10 @@ export default function ContactPage() {
         <Link
           href="/"
           className="mb-12 inline-flex items-center gap-2 rounded text-sm text-neutral-400 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] focus-visible:text-white"
-          aria-label="Back to home"
+          aria-label={t("contactPage.backToHome")}
         >
           <ArrowLeft className="size-4" />
-          Back to home
+          {t("contactPage.backToHome")}
         </Link>
         <motion.h1
           id="contact-page-heading"
@@ -46,7 +48,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          Contact
+          {t("contactPage.heading")}
         </motion.h1>
         <motion.p
           className="mt-4 text-neutral-400"
@@ -54,7 +56,7 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          Send me a message and I&apos;ll get back to you.
+          {t("contactPage.subhead")}
         </motion.p>
 
         <motion.form
@@ -69,13 +71,13 @@ export default function ContactPage() {
               htmlFor="name"
               className="mb-2 block text-sm font-medium text-neutral-300"
             >
-              Name
+              {t("contactPage.nameLabel")}
             </label>
             <Input
               id="name"
               name="name"
               type="text"
-              placeholder="Your name"
+              placeholder={t("contactPage.namePlaceholder")}
               value={formState.name}
               onChange={handleChange}
               required
@@ -87,13 +89,13 @@ export default function ContactPage() {
               htmlFor="email"
               className="mb-2 block text-sm font-medium text-neutral-300"
             >
-              Email
+              {t("contactPage.emailLabel")}
             </label>
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="your@email.com"
+              placeholder={t("contactPage.emailPlaceholder")}
               value={formState.email}
               onChange={handleChange}
               required
@@ -105,13 +107,13 @@ export default function ContactPage() {
               htmlFor="message"
               className="mb-2 block text-sm font-medium text-neutral-300"
             >
-              Message
+              {t("contactPage.messageLabel")}
             </label>
             <textarea
               id="message"
               name="message"
               rows={5}
-              placeholder="Your message..."
+              placeholder={t("contactPage.messagePlaceholder")}
               value={formState.message}
               onChange={handleChange}
               required
@@ -122,7 +124,7 @@ export default function ContactPage() {
             type="submit"
             className="w-full border-blue-500/50 bg-blue-500/20 text-blue-400 hover:bg-blue-500/30"
           >
-            Send Message
+            {t("contactPage.submitLabel")}
           </Button>
         </motion.form>
       </div>

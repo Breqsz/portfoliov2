@@ -42,6 +42,14 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   image?: string;
+  /**
+   * When present, the UI can show a LinkedIn-style choice that routes
+   * to academic vs personal GitHub repositories.
+   */
+  linkedinChoice?: {
+    academicGithubUrl: string;
+    personalGithubUrl: string;
+  };
 }
 
 /** Helper to derive legacy props for ProjectCard / homepage */
@@ -51,6 +59,7 @@ export function toLegacyProject(p: Project) {
     description: p.summary,
     href: p.liveUrl ?? "#",
     githubHref: p.githubUrl,
+    linkedinChoice: p.linkedinChoice,
     tags: p.stack,
     image: p.image,
     featured: p.featured,
@@ -160,6 +169,71 @@ export const projects: Project[] = [
     flagship: false,
     year: "2024",
     status: "prototype",
+  },
+  {
+    slug: "whatif",
+    title: "WhatIF",
+    summary:
+      "Projeto interativo “E SE...” — narrativa e escolhas com foco em experiência e imersão.",
+    description:
+      "WhatIF é um projeto interativo com foco em narrativa: cada escolha traz ganhos e custos invisíveis, guiando o usuário em uma experiência imersiva para explorar diferentes caminhos.",
+    stack: ["React", "TypeScript", "HTML", "CSS", "JavaScript"],
+    highlights: [
+      "Narrativa interativa com escolhas",
+      "Interface responsiva",
+      "Design de experiência e imersão",
+    ],
+    category: "Product",
+    tags: ["Web", "Product"],
+    featured: false,
+    flagship: false,
+    year: "2025",
+    status: "live",
+    liveUrl: "https://tourmaline-bombolone-575d2e.netlify.app",
+    image: "/images/WhatIF/image.png",
+  },
+  {
+    slug: "synerh",
+    title: "Synerh (Mobile 2030+)",
+    summary:
+      "Aplicativo e dashboard mobile da “Rede Profissional do Futuro” (2030+), com experiência gamificada e recursos de IA.",
+    description:
+      "Projeto voltado à experiência mobile e a uma jornada interativa dentro da rede profissional do futuro, com gamificação, etapas e recomendações para apoiar a evolução do usuário.",
+    stack: ["Mobile", "Dashboard", "IA", "Gamificação"],
+    highlights: [
+      "Experiência gamificada e evolução por etapas",
+      "Painel/dashboards com métricas e progressos",
+      "Recomendações e suporte por IA",
+    ],
+    category: "Product",
+    tags: ["Web", "Product"],
+    featured: false,
+    flagship: false,
+    year: "2025",
+    status: "live",
+    liveUrl: "https://synerh.netlify.app",
+    image: "/images/Synerh/image.png",
+  },
+  {
+    slug: "unreal-metaverso",
+    title: "Projeto Unreal (Disciplina de Metaverso)",
+    summary: "Projeto em Unreal Engine desenvolvido na disciplina de Metaverso (ano passado).",
+    description:
+      "Projeto em Unreal Engine desenvolvido na disciplina de Metaverso (ano passado). Clique no card para assistir ao vídeo e, pelo botão do LinkedIn, escolha o GitHub acadêmico ou pessoal.",
+    stack: ["Unreal Engine", "Metaverso"],
+    highlights: ["Unreal Engine", "Experiência em Metaverso"],
+    category: "Experimental",
+    tags: ["Unreal Engine", "Metaverso"],
+    featured: false,
+    flagship: false,
+    year: "2025",
+    status: "live",
+    liveUrl: "https://www.youtube.com/watch?v=lj-duEsnKv8",
+    image: "/images/metaverso/metaverso.jpeg",
+    linkedinChoice: {
+      academicGithubUrl: "https://github.com/Breqsz",
+      personalGithubUrl: "https://github.com/Breq1337",
+    },
   },
 ];
 

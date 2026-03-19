@@ -2,7 +2,7 @@
 
 import { useRef, useState, useCallback } from "react";
 import { motion, useSpring } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Linkedin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motionConfig } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -13,10 +13,23 @@ interface ProjectCardProps {
   description: string;
   href?: string;
   githubHref?: string;
+  linkedinChoice?: {
+    academicGithubUrl: string;
+    personalGithubUrl: string;
+  };
   tags?: string[];
   image?: string;
   className?: string;
   featured?: boolean;
+}
+
+function escapeHtml(input: string) {
+  return input
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 export function ProjectCard({
@@ -24,6 +37,7 @@ export function ProjectCard({
   description,
   href = "#",
   githubHref,
+  linkedinChoice,
   tags = [],
   image,
   className,
@@ -32,7 +46,7 @@ export function ProjectCard({
   const ref = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const tagLabel = (tag: string) => {
     const key = "projectTags." + tag;
     const translated = t(key);
@@ -48,6 +62,68 @@ export function ProjectCard({
   };
   const rotateXSpring = useSpring(rotateX, springConfig);
   const rotateYSpring = useSpring(rotateY, springConfig);
+
+  const openLinkedinGithubChoiceTab = useCallback(() => {
+    if (!linkedinChoice) return;
+
+    const choiceTitle = t("projects.metaverso.githubChoiceTitle");
+    const academicLabel = t("projects.metaverso.githubChoiceAcademic");
+    const personalLabel = t("projects.metaverso.githubChoicePersonal");
+    const htmlLang = locale === "en" ? "en" : "pt-BR";
+
+    const w = window.open("", "_blank", "noopener,noreferrer");
+    if (!w) return;
+
+    const html = `<!doctype html>
+<html lang="${htmlLang}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GitHub</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background: #0a0a0a;
+        color: #fff;
+      }
+      h1 { font-size: 20px; line-height: 1.3; margin: 0 0 12px; }
+      p { margin: 0 0 18px; color: rgba(255,255,255,0.75); }
+      .row { display: flex; gap: 12px; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+        border-radius: 12px;
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.06);
+        color: #fff;
+        font-weight: 600;
+      }
+      .btn:hover { border-color: rgba(59,130,246,0.5); background: rgba(59,130,246,0.14); }
+    </style>
+  </head>
+  <body>
+    <h1>${escapeHtml(choiceTitle)}</h1>
+    <div class="row">
+      <a class="btn" href="${linkedinChoice.academicGithubUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(
+        academicLabel
+      )}</a>
+      <a class="btn" href="${linkedinChoice.personalGithubUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(
+        personalLabel
+      )}</a>
+    </div>
+  </body>
+</html>`;
+
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
+  }, [linkedinChoice, t, locale]);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -164,6 +240,16 @@ export function ProjectCard({
           <Github className="size-4" />
           GitHub
         </a>
+      )}
+      {linkedinChoice && (
+        <button
+          type="button"
+          onClick={openLinkedinGithubChoiceTab}
+          className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm transition-all duration-300 hover:scale-[1.02] hover:border-blue-500/30 hover:bg-blue-500/10 hover:text-white ds-body-muted"
+        >
+          <Linkedin className="size-4" />
+          {t("projects.metaverso.ctaLinkedin")}
+        </button>
       )}
       {href && href !== "#" && (
         <a

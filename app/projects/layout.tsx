@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/config";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Projects",
+  title: "Projetos",
   description:
-    "Featured projects: SYNERH, Fyora, GuardianCam AI, LeakScore. Web development, cloud infrastructure, and cybersecurity applications.",
+    "Projetos em destaque: TodoGreen, Fyora e NeuroRace. Desenvolvimento web full-stack, infraestrutura cloud e soluções de segurança.",
   path: "/projects",
 });
 

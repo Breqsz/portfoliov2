@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { motionConfig } from "@/lib/motion";
 import type { ProjectCategory } from "@/lib/data/projects";
+import { useLocale } from "@/lib/i18n/context";
 
 interface ProjectFilterProps {
   active: ProjectCategory;
@@ -13,6 +14,7 @@ interface ProjectFilterProps {
 }
 
 export function ProjectFilter({ active, onChange, counts, className }: ProjectFilterProps) {
+  const { t } = useLocale();
   const categories: ProjectCategory[] = [
     "All",
     "Web",
@@ -26,11 +28,12 @@ export function ProjectFilter({ active, onChange, counts, className }: ProjectFi
   return (
     <div
       role="tablist"
-      aria-label="Filter projects by category"
+      aria-label={t("projects.filterByCategory")}
       className={cn("flex flex-wrap gap-2", className)}
     >
       {categories.map((cat) => {
         const isActive = active === cat;
+        const label = t(`projects.categoryLabels.${cat}`);
         return (
           <button
             key={cat}
@@ -54,7 +57,7 @@ export function ProjectFilter({ active, onChange, counts, className }: ProjectFi
               />
             )}
             <span className="relative z-10 flex items-center gap-2">
-              {cat}
+              {label === `projects.categoryLabels.${cat}` ? cat : label}
               {counts?.[cat] != null && (
                 <span className={cn("text-xs", isActive ? "text-neutral-400" : "text-neutral-500")}>
                   {counts[cat]}

@@ -33,8 +33,10 @@ export function MagneticButton({
   const reducedMotion = useReducedMotion();
   const magnetic = useMagneticEffect({
     strength: reducedMotion ? 0 : strength,
-    stiffness: 350,
-    damping: 28,
+    // "Smooth" - menos rigidez e um leve aumento de amortecimento
+    // para reduzir sensação de "tranco" no hover.
+    stiffness: 270,
+    damping: 34,
   });
 
   const sharedStyles = {
@@ -44,9 +46,10 @@ export function MagneticButton({
 
   const baseClasses = cn(
     "group relative flex min-h-[44px] items-center overflow-hidden rounded-xl px-6 py-3.5 text-sm font-medium",
-    "transition-[border-color,box-shadow,transform,background-color] duration-300",
+    // Deixa o Framer controlar a animação de transform/translate.
+    "transition-[border-color,box-shadow,background-color] duration-300",
     "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]",
-    "active:scale-[0.98]"
+    "active:scale-[0.99]"
   );
 
   const variantClasses = {
@@ -100,9 +103,10 @@ export function MagneticButton({
           }
           onClick?.();
         }}
-        whileHover={reducedMotion ? {} : { y: -2 }}
-        whileTap={reducedMotion ? {} : { scale: 0.98 }}
-        transition={motionConfig.easing.springSoft}
+        // Evita conflito com o "y" vindo do efeito magnético (spring).
+        whileHover={reducedMotion ? {} : {}}
+        whileTap={reducedMotion ? {} : { scale: 0.99 }}
+        transition={{ duration: motionConfig.duration.fast, ease: motionConfig.easing.smooth }}
       >
         {buttonContent}
       </motion.a>
@@ -115,9 +119,9 @@ export function MagneticButton({
       {...commonProps}
       type="button"
       onClick={onClick}
-      whileHover={reducedMotion ? {} : { y: -2 }}
-      whileTap={reducedMotion ? {} : { scale: 0.98 }}
-      transition={motionConfig.easing.springSoft}
+      whileHover={reducedMotion ? {} : {}}
+      whileTap={reducedMotion ? {} : { scale: 0.99 }}
+      transition={{ duration: motionConfig.duration.fast, ease: motionConfig.easing.smooth }}
     >
       {buttonContent}
     </motion.button>

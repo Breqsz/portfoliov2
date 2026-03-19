@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "BREQ — Software Engineer Portfolio";
+export const alt = "BREQ — Portfólio de Engenheiro de Software";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -36,7 +36,7 @@ export default function OpenGraphImage() {
             marginBottom: 24,
           }}
         >
-          Software Engineer
+          Engenheiro de Software
         </div>
         <div
           style={{
@@ -46,7 +46,7 @@ export default function OpenGraphImage() {
             textAlign: "center",
           }}
         >
-          Full-stack development · Cloud infrastructure · Cybersecurity
+          Desenvolvimento full-stack · Infraestrutura cloud · Cibersegurança
         </div>
         <div
           style={{

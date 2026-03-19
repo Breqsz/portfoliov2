@@ -38,9 +38,9 @@ export function DownloadCVButton({ className }: { className?: string }) {
           "active:scale-[0.98]",
           className
         )}
-        whileHover={{ y: -1 }}
-        whileTap={{ scale: 0.98 }}
-        transition={motionConfig.easing.springSoft}
+        whileHover={{ y: -0.5 }}
+        whileTap={{ scale: 0.99 }}
+        transition={{ duration: motionConfig.duration.fast, ease: motionConfig.easing.smooth }}
       >
         <FileDown className="size-4 shrink-0" />
         {t("about.ctaDownload")}
@@ -63,7 +63,7 @@ export function DownloadCVButton({ className }: { className?: string }) {
               type="button"
               onClick={() => setOpen(false)}
               className="absolute right-4 top-4 rounded-lg p-1 text-neutral-400 transition-colors hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
-              aria-label="Fechar"
+              aria-label={t("common.close")}
             >
               <X className="size-5" />
             </button>

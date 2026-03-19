@@ -163,7 +163,7 @@ export function AboutSection() {
                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]",
                     "active:scale-[0.98]"
                   )}
-                  aria-label="LinkedIn (opens in new tab)"
+                  aria-label={t("common.linkedinOpensInNewTab")}
                 >
                   <Linkedin className="size-4" />
                   {t("about.ctaLinkedIn")}

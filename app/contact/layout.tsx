@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/config";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Contact",
+  title: "Contato",
   description:
-    "Get in touch with Guilherme Bianchini. Interested in collaborating or working together? Let's connect via email, GitHub, or LinkedIn.",
+    "Entre em contato com Guilherme Bianchini. Quer colaborar ou trabalhar junto? Vamos conversar via e-mail, GitHub ou LinkedIn.",
   path: "/contact",
 });
 

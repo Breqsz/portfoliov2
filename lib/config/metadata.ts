@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const siteName = "BREQ";
-const siteTitle = "Guilherme Rocha Bianchini — Software Engineer";
+const siteTitle = "Guilherme Rocha Bianchini — Engenheiro de Software";
 const siteDescription =
   "Engenheiro de Software, estudante FIAP. Desenvolvimento full-stack, cloud computing e soluções escaláveis. Buscando estágio em TI.";
 

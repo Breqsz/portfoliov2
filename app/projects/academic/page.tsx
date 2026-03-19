@@ -26,7 +26,7 @@ export default function AcademicProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="ds-section-label">Projetos acadêmicos e pessoais</p>
+            <p className="ds-section-label">{t("academic.sectionLabel")}</p>
             <h1 id="academic-heading" className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
               {t("academic.heading")}
             </h1>
@@ -43,7 +43,7 @@ export default function AcademicProjectsPage() {
 
       <section
         className="px-6 py-16 lg:px-12 xl:px-16"
-        aria-label="Lista de projetos acadêmicos e pessoais"
+        aria-label={t("academic.listAriaLabel")}
       >
         <div className="mx-auto max-w-content">
           {academicProjects.length > 0 ? (

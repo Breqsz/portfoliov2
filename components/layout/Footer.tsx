@@ -19,7 +19,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="rounded ds-body-muted transition-colors duration-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] focus-visible:text-white"
-            aria-label="GitHub (opens in new tab)"
+            aria-label={t("common.githubOpensInNewTab")}
           >
             <Github className="size-5" />
           </a>
@@ -28,7 +28,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="rounded ds-body-muted transition-colors duration-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] focus-visible:text-white"
-            aria-label="LinkedIn (opens in new tab)"
+            aria-label={t("common.linkedinOpensInNewTab")}
           >
             <Linkedin className="size-5" />
           </a>

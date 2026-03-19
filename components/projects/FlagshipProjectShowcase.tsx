@@ -23,6 +23,10 @@ export function FlagshipProjectShowcase({
 }: FlagshipProjectShowcaseProps) {
   const { t } = useLocale();
   const isReverse = layout === "reverse";
+  const categoryLabel = t(`projects.categoryLabels.${project.category}`);
+  const statusLabel = project.status ? t(`projects.statusLabels.${project.status}`) : project.status;
+  const problemLabel = t("projects.problemLabel");
+  const approachLabel = t("projects.approachLabel");
 
   return (
     <motion.article
@@ -75,11 +79,11 @@ export function FlagshipProjectShowcase({
           )}
           <div className="absolute left-4 top-4 flex items-center gap-2">
             <span className="rounded-full bg-blue-500/20 px-2.5 py-1 text-xs font-medium text-blue-400">
-              {project.category}
+              {categoryLabel}
             </span>
             {project.status !== "live" && (
               <span className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-neutral-500">
-                {project.status}
+                {statusLabel}
               </span>
             )}
           </div>
@@ -99,7 +103,7 @@ export function FlagshipProjectShowcase({
             {project.problem && (
               <div className="mt-6 space-y-2">
                 <p className="text-xs font-medium uppercase tracking-wider text-blue-500/80">
-                  Problem
+                  {problemLabel}
                 </p>
                 <p className="text-sm leading-relaxed text-neutral-500">{project.problem}</p>
               </div>
@@ -108,7 +112,7 @@ export function FlagshipProjectShowcase({
             {project.solution && (
               <div className="mt-4 space-y-2">
                 <p className="text-xs font-medium uppercase tracking-wider text-blue-500/80">
-                  Approach
+                  {approachLabel}
                 </p>
                 <p className="text-sm leading-relaxed text-neutral-500">{project.solution}</p>
               </div>

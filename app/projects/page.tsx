@@ -14,6 +14,7 @@ import {
   type Project,
   type ProjectCategory,
 } from "@/lib/data/projects";
+import { useLocale } from "@/lib/i18n/context";
 
 function matchesCategory(project: Project, category: ProjectCategory): boolean {
   if (category === "All") return true;
@@ -22,6 +23,7 @@ function matchesCategory(project: Project, category: ProjectCategory): boolean {
 }
 
 export default function ProjectsPage() {
+  const { t } = useLocale();
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>("All");
 
   const filteredProjects = useMemo(
@@ -51,7 +53,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* Filter */}
-      <section className="px-6 py-12 lg:px-12 xl:px-16" aria-label="Filter projects">
+      <section className="px-6 py-12 lg:px-12 xl:px-16" aria-label={t("projects.filterByCategory")}>
         <div className="mx-auto max-w-content">
           <ProjectFilter active={activeFilter} onChange={setActiveFilter} />
         </div>
@@ -65,7 +67,7 @@ export default function ProjectsPage() {
         >
           <div className="mx-auto max-w-content">
             <h2 id="flagship-heading" className="sr-only">
-              Featured projects
+              {t("projects.featuredHeading")}
             </h2>
             <div className="space-y-16">
               <AnimatePresence mode="wait">
@@ -99,7 +101,7 @@ export default function ProjectsPage() {
                 id="archive-heading"
                 className="mb-10 text-xl font-semibold text-white sm:text-2xl"
               >
-                More work
+                {t("projects.archiveHeading")}
               </h2>
               <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 <AnimatePresence mode="popLayout">
@@ -118,7 +120,7 @@ export default function ProjectsPage() {
         <section className="px-6 py-24 lg:px-12 xl:px-16">
           <div className="mx-auto max-w-content text-center">
             <p className="ds-body-muted text-lg">
-              No projects in this category yet. Try another filter.
+              {t("projects.emptyState")}
             </p>
           </div>
         </section>

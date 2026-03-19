@@ -59,12 +59,15 @@ export function Navbar() {
         scrolled ? "border-white/[0.08]" : "border-white/[0.04]"
       )}
     >
-      <nav className="mx-auto flex h-16 max-w-content items-center justify-between px-6" aria-label="Main navigation">
+      <nav
+        className="mx-auto flex h-16 max-w-content items-center justify-between px-6"
+        aria-label={t("nav.mainNavigation")}
+      >
         <Link
           href="/"
           data-cursor="link"
           className="rounded text-lg font-semibold tracking-tight text-white transition-opacity duration-300 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
-          aria-label={`${site.name} - Home`}
+          aria-label={`${site.name} - ${t("nav.home")}`}
         >
           {site.name}
         </Link>
@@ -83,8 +86,8 @@ export function Navbar() {
                 "rounded-md p-1.5 text-xs transition-colors",
                 cursorEnabled ? "bg-white/10 text-white" : "text-neutral-500 hover:text-neutral-400"
               )}
-              aria-label={cursorEnabled ? "Desativar cursor animado" : "Ativar cursor animado"}
-              title={cursorEnabled ? "Desativar cursor animado" : "Ativar cursor animado"}
+              aria-label={cursorEnabled ? t("nav.disableCursorAria") : t("nav.enableCursorAria")}
+              title={cursorEnabled ? t("nav.disableCursorAria") : t("nav.enableCursorAria")}
             >
               <MousePointer2 className="size-4" />
             </button>
@@ -97,7 +100,7 @@ export function Navbar() {
                 "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
                 locale === "pt" ? "bg-white/10 text-white" : "text-neutral-400 hover:text-white"
               )}
-              aria-label="Português"
+              aria-label={t("nav.languagePt")}
             >
               PT
             </button>
@@ -110,7 +113,7 @@ export function Navbar() {
                 "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
                 locale === "en" ? "bg-white/10 text-white" : "text-neutral-400 hover:text-white"
               )}
-              aria-label="English"
+              aria-label={t("nav.languageEn")}
             >
               EN
             </button>
@@ -119,7 +122,7 @@ export function Navbar() {
 
         <motion.button
           type="button"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.openMenu")}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           className="flex size-10 items-center justify-center rounded-xl text-neutral-400 transition-colors duration-300 hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] md:hidden"
@@ -156,7 +159,7 @@ export function Navbar() {
         {mobileOpen && (
           <motion.nav
             id="mobile-nav"
-            aria-label="Mobile navigation"
+            aria-label={t("nav.mobileNavigation")}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -190,7 +193,7 @@ export function Navbar() {
                     "flex min-h-[44px] items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
                     cursorEnabled ? "bg-white/10 text-white" : "text-neutral-500"
                   )}
-                  aria-label={cursorEnabled ? "Desativar cursor animado" : "Ativar cursor animado"}
+                  aria-label={cursorEnabled ? t("nav.disableCursorAria") : t("nav.enableCursorAria")}
                 >
                   <MousePointer2 className="size-4" />
                   <span>{cursorEnabled ? t("nav.cursorOn") : t("nav.cursorOff")}</span>

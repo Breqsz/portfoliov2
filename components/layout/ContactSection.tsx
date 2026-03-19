@@ -44,7 +44,7 @@ export function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex min-h-[44px] items-center gap-3 rounded-lg text-neutral-300 transition-all duration-300 hover:scale-[1.02] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
-                aria-label="GitHub (opens in new tab)"
+                aria-label={t("common.githubOpensInNewTab")}
               >
                 <span className="ds-surface flex size-11 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:border-white/[0.12]">
                   <Github className="size-5" />
@@ -56,7 +56,7 @@ export function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex min-h-[44px] items-center gap-3 rounded-lg text-neutral-300 transition-all duration-300 hover:scale-[1.02] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
-                aria-label="LinkedIn (opens in new tab)"
+                aria-label={t("common.linkedinOpensInNewTab")}
               >
                 <span className="ds-surface flex size-11 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:border-white/[0.12]">
                   <Linkedin className="size-5" />
@@ -85,7 +85,13 @@ export function ContactSection() {
             </div>
 
             <div className="mt-10 flex justify-center">
-              <MagneticButton href={contact.whatsapp} variant="primary" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
+              <MagneticButton
+                href={contact.whatsapp}
+                variant="primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("common.openWhatsApp")}
+              >
                 {t("contact.letsConnect")}
               </MagneticButton>
             </div>
